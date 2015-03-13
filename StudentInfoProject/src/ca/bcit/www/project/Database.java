@@ -45,7 +45,7 @@ public class Database {
     /**
      * <p> GetStudent method is to find a Student by id. </p>
      * 
-     * @param id integer student id: 1 ~ n(n is the number of students)
+     * @param id integer student id
      * @return StudentObject : if found
      *         null          : if not found
      */
@@ -57,7 +57,7 @@ public class Database {
         int high = system.size() - 1;
         int middle;
         int currentID;
-        StudentObject result= null;
+        StudentObject result = null;
         StudentObject someOne = null;
 
         while(low <= high){
