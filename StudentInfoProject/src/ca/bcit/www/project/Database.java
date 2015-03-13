@@ -7,7 +7,7 @@ import java.util.ArrayList;
  *    and to offer the services(APIs). </p>
  * 
  * @author  Albert GUO
- * @version 1.0
+ * @version 1.1
  *
  */
 public class Database {
@@ -45,21 +45,19 @@ public class Database {
     /**
      * <p> GetStudent method is to find a Student by id. </p>
      * 
-     * @param id integer student id
+     * @param id integer student id: 1 ~ n(n is the number of students)
      * @return StudentObject : if found
      *         null          : if not found
      */
     public static StudentObject GetStudent(int id){
-    	if(0 == system.size() || id > system.size()) return null;
-        StudentObject result= null;
-        for(StudentObject someOne:system)
-            if(id == someOne.getID()){
-                result = new StudentObject(someOne.getID(), 
-                                           someOne.getFirstName(),
-                                           someOne.getLastName(),
-                                           someOne.getGrade());
-                break;
-            }
+    	if(id <= 0 || id > system.size()) return null;
+
+    	// logically valid studentID should start from 1 to n
+    	// in ArrayList, valid index should be 0 ~ n-1
+        StudentObject someOne = system.get(id - 1);
+        StudentObject result = new StudentObject(id, someOne.getFirstName(), 
+        		                       someOne.getLastName(),
+                                       someOne.getGrade());
         return result;
     }
 
